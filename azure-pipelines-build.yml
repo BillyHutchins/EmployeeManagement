@@ -21,11 +21,12 @@ pool:
 #Your build pipeline references an undefined variable named ‘Parameters.ArtifactName’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
 
 steps:
-- powershell: |
+- powershell: 
         Write-Host '##vso[task.setvariable variable=BuildConfiguration;]release'
         Write-Host '##vso[task.setvariable variable=BuildPlatform;]any cpu'
         Write-Host '##vso[task.setvariable variable=Parameters.solution;]**/*.sln'
         Write-Host '##vso[task.setvariable variable=Parameters.ArtifactName;]EmployeeManagement'
+   displayName: 'Set Variables'
 
 - task: NuGetToolInstaller@0
   displayName: 'Use NuGet 4.4.1'
